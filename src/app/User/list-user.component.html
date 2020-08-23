@@ -1,0 +1,53 @@
+<div  align="center" >
+  <div >
+          <div class="container">
+            <h3>Users Management</h3><hr>
+           
+            <div class="row"  *ngIf="getInsert">
+              <div class="col-xs-12">
+                <p class="alert alert-success">
+                    <strong>{{getInsert}}.</strong>
+      
+                </p>
+              </div>
+            </div>
+            <div class="row"  *ngIf="getUpdate">
+              <div class="col-xs-12">
+                <p class="alert alert-success">
+                    <strong>{{getUpdate}}.</strong>
+      
+                </p>
+              </div>
+            </div>
+            <div class="text-right"><button  class="btn btn-success  pull-right" (click)="addUser()"> Add User</button></div>
+            <div class="table-responsive">
+              <table class="table table-hover table-bordered ">
+                  <thead class="thead-dark">
+                  <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Status</th>                            
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let user of users | paginate:{id:'listing_paginate',itemsPerPage : limit,currentPage:page,totalItems:totalRecords}">
+                    <td>{{user.id}}</td>
+                    <td>{{user.name}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.status}}</td>
+                    <td><button class="btn btn-success" (click)="editUser(user.id)" style="margin-left: 20px;"> Edit</button>&nbsp;&nbsp;
+                      <button class="btn btn-danger" (click)="deleteUser(user.id)"> Delete</button>
+                      </td>
+                  </tr>
+                  </tbody>
+              </table>
+            </div>
+            <div class="list">
+              
+              
+            </div>
+        </div>
+        </div>
+</div> 
